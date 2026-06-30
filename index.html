@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>City of Lindenhaven - Resident Parking Permit Demo</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='8' fill='%2307304d'/%3E%3Cpath d='M24 7 12 11v9c0 8.5 4.8 14.5 12 18 7.2-3.5 12-9.5 12-18v-9L24 7Z' fill='none' stroke='white' stroke-width='3'/%3E%3Cpath d='M17 22h14M24 15v18' stroke='%2300a0ad' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M24 4 8 9v12c0 11.4 6.6 18.5 16 23 9.4-4.5 16-11.6 16-23V9L24 4Z"></path>
+              <path d="M16 19h16M18 27h12M24 13v20" class="mark-line"></path>
+            </svg>
+          </div>
+          <div>
+            <strong>City of Lindenhaven</strong>
+            <span>Service Portal</span>
+          </div>
+        </div>
+
+        <form class="top-search" id="topSearch" role="search">
+          <label class="sr-only" for="searchInput">Search services, topics, forms</label>
+          <input id="searchInput" name="query" type="search" placeholder="Search services, topics, forms...">
+          <button class="icon-button" type="submit" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.7-4.7M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"></path>
+            </svg>
+          </button>
+        </form>
+      </header>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <button type="button" class="nav-item is-active">Home</button>
+        <button type="button" class="nav-item">Services</button>
+        <button type="button" class="nav-item">Appointments</button>
+        <button type="button" class="nav-item">Payments</button>
+        <button type="button" class="nav-item">News</button>
+        <button type="button" class="nav-item">City Council</button>
+        <button type="button" class="nav-item">Help & Contact</button>
+      </nav>
+
+      <div class="workspace">
+        <main class="portal-panel" id="portalPanel" tabindex="-1">
+          <section class="screen is-active" data-screen="intro" aria-labelledby="introTitle">
+            <div class="scenario-header">
+              <p class="section-label">Training scenario</p>
+              <h1 id="introTitle">You are applying for a resident parking permit as Max Sample.</h1>
+              <p>
+                Your electronic ID has just been read. The portal already received your core resident data
+                and your registered vehicle details.
+              </p>
+            </div>
+
+            <div class="profile-grid">
+              <article class="info-card">
+                <span class="card-kicker">Identity read</span>
+                <h2>Max Sample</h2>
+                <dl>
+                  <div>
+                    <dt>Date of birth</dt>
+                    <dd>12 May 1990</dd>
+                  </div>
+                  <div>
+                    <dt>Main residence</dt>
+                    <dd>Lindenstrasse 25, 12345 Lindenhaven</dd>
+                  </div>
+                </dl>
+              </article>
+
+              <article class="info-card">
+                <span class="card-kicker">Vehicle register</span>
+                <h2>LH-MX 2042</h2>
+                <dl>
+                  <div>
+                    <dt>Vehicle owner</dt>
+                    <dd>Max Sample</dd>
+                  </div>
+                  <div>
+                    <dt>Permit zone</dt>
+                    <dd>North Quarter Zone A</dd>
+                  </div>
+                </dl>
+              </article>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-button" type="button" data-go="briefing">
+                Continue
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="briefing" aria-labelledby="briefingTitle">
+            <div class="scenario-header narrow">
+              <p class="section-label">Before the portal opens</p>
+              <h1 id="briefingTitle">The setup looks promising.</h1>
+              <p>
+                The city system confirms that authentication, address verification and vehicle matching
+                have already happened in the background.
+              </p>
+            </div>
+
+            <ol class="event-list">
+              <li>
+                <span class="event-icon" aria-hidden="true">1</span>
+                <div>
+                  <h2>Electronic ID check completed</h2>
+                  <p>The resident account returned name, date of birth and main residence.</p>
+                </div>
+              </li>
+              <li>
+                <span class="event-icon" aria-hidden="true">2</span>
+                <div>
+                  <h2>Vehicle data found</h2>
+                  <p>The license plate LH-MX 2042 is linked to the same person and address.</p>
+                </div>
+              </li>
+              <li>
+                <span class="event-icon" aria-hidden="true">3</span>
+                <div>
+                  <h2>Service goal selected</h2>
+                  <p>Max wants to apply online for a resident parking permit in Lindenhaven.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="action-row split">
+              <button class="secondary-button" type="button" data-go="intro">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+              </button>
+              <button class="primary-button" type="button" data-go="portal">
+                Open city portal
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="portal" aria-labelledby="portalTitle">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>Home</span>
+              <span>Services</span>
+              <span>Traffic</span>
+            </div>
+
+            <div class="service-landing">
+              <div>
+                <p class="section-label">Municipal services</p>
+                <h1 id="portalTitle">Find and start a city service</h1>
+                <p>
+                  Search the portal or browse the service directory. The resident parking permit is
+                  available online, but it is not where most residents would expect it.
+                </p>
+              </div>
+              <div class="callout" data-linked-error="1">
+                <strong>Try the search</strong>
+                <span>Search for "parking permit" and see what the portal returns.</span>
+              </div>
+            </div>
+
+            <div class="search-card" data-linked-error="1">
+              <form id="serviceSearch" role="search">
+                <label for="serviceSearchInput">Search services</label>
+                <div class="field-with-button">
+                  <input id="serviceSearchInput" type="search" value="parking permit">
+                  <button class="primary-button small" type="submit">
+                    Search
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="m21 21-4.7-4.7M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              <div class="search-result" id="searchResult" aria-live="polite">
+                Search only checks exact category names. "parking permit" returns no service result.
+              </div>
+            </div>
+
+            <div class="directory" data-linked-error="1">
+              <div class="directory-header">
+                <h2>Service directory</h2>
+                <span>Browse the hidden path</span>
+              </div>
+              <div class="directory-columns">
+                <button class="directory-item is-selected" type="button" data-menu="traffic">
+                  Traffic
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+                <button class="directory-item" type="button" data-menu="stationary">
+                  Stationary traffic
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+                <button class="directory-item" type="button" data-menu="special">
+                  Special parking permissions
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+                <button class="directory-item service-link" type="button" data-start-application>
+                  Resident parking permit
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="applicant" aria-labelledby="applicantTitle">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>Home</span>
+              <span>Services</span>
+              <span>Traffic</span>
+              <span>Resident parking permit</span>
+            </div>
+
+            <div class="form-header">
+              <div>
+                <p class="section-label">Application</p>
+                <h1 id="applicantTitle">Apply for a resident parking permit</h1>
+                <p>Step 1 asks again for data that was already read from the electronic ID.</p>
+              </div>
+              <aside class="help-box">
+                <strong>Need help?</strong>
+                <span>Telephone support is available on working days from 09:00 to 12:00.</span>
+              </aside>
+            </div>
+
+            <div class="stepper" aria-label="Application progress">
+              <span class="is-current">1 Applicant</span>
+              <span>2 Vehicle</span>
+              <span>3 Review</span>
+              <span>4 Print</span>
+            </div>
+
+            <form class="form-card" data-linked-error="3">
+              <div class="notice">
+                <strong>Already verified:</strong>
+                Max Sample, 12 May 1990, Lindenstrasse 25, LH-MX 2042.
+              </div>
+              <div class="form-grid">
+                <label>
+                  Full name
+                  <input type="text" value="Max Sample" required>
+                </label>
+                <label>
+                  Date of birth
+                  <input type="text" value="12.05.1990" required>
+                </label>
+                <label>
+                  Main residence
+                  <input type="text" value="Lindenstrasse 25, 12345 Lindenhaven" required>
+                </label>
+                <label>
+                  Email address
+                  <input type="email" value="max.sample@example.com" required>
+                </label>
+              </div>
+            </form>
+
+            <div class="action-row split">
+              <button class="secondary-button" type="button" data-go="portal">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+              </button>
+              <button class="primary-button" type="button" data-go="vehicle">
+                Continue
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="vehicle" aria-labelledby="vehicleTitle">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>Home</span>
+              <span>Resident parking permit</span>
+              <span>Vehicle</span>
+            </div>
+
+            <div class="form-header">
+              <div>
+                <p class="section-label">Application</p>
+                <h1 id="vehicleTitle">Vehicle and permit zone</h1>
+                <p>The form repeats the license plate and residence fields instead of reusing the verified register data.</p>
+              </div>
+            </div>
+
+            <div class="stepper" aria-label="Application progress">
+              <span>1 Applicant</span>
+              <span class="is-current">2 Vehicle</span>
+              <span>3 Review</span>
+              <span>4 Print</span>
+            </div>
+
+            <form class="form-card" data-linked-error="3">
+              <div class="form-grid">
+                <label>
+                  License plate
+                  <input type="text" value="LH-MX 2042" required>
+                </label>
+                <label>
+                  Vehicle owner
+                  <input type="text" value="Max Sample" required>
+                </label>
+                <label>
+                  Main residence
+                  <input type="text" value="Lindenstrasse 25, 12345 Lindenhaven" required>
+                </label>
+                <label>
+                  Requested parking zone
+                  <select required>
+                    <option>North Quarter Zone A</option>
+                    <option>Market District Zone B</option>
+                    <option>Harbor Street Zone C</option>
+                  </select>
+                </label>
+              </div>
+            </form>
+
+            <div class="action-row split">
+              <button class="secondary-button" type="button" data-go="applicant">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+              </button>
+              <button class="primary-button" type="button" data-go="review">
+                Continue
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="review" aria-labelledby="reviewTitle">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>Home</span>
+              <span>Resident parking permit</span>
+              <span>Review</span>
+            </div>
+
+            <div class="form-header">
+              <div>
+                <p class="section-label">Application</p>
+                <h1 id="reviewTitle">Review and fee</h1>
+                <p>The portal can calculate the fee but does not offer a digital payment step.</p>
+              </div>
+            </div>
+
+            <div class="stepper" aria-label="Application progress">
+              <span>1 Applicant</span>
+              <span>2 Vehicle</span>
+              <span class="is-current">3 Review</span>
+              <span>4 Print</span>
+            </div>
+
+            <div class="review-grid">
+              <article class="summary-card">
+                <h2>Application summary</h2>
+                <dl>
+                  <div>
+                    <dt>Applicant</dt>
+                    <dd>Max Sample</dd>
+                  </div>
+                  <div>
+                    <dt>Address</dt>
+                    <dd>Lindenstrasse 25, 12345 Lindenhaven</dd>
+                  </div>
+                  <div>
+                    <dt>Vehicle</dt>
+                    <dd>LH-MX 2042</dd>
+                  </div>
+                  <div>
+                    <dt>Permit zone</dt>
+                    <dd>North Quarter Zone A</dd>
+                  </div>
+                </dl>
+              </article>
+
+              <article class="payment-card" data-linked-error="8">
+                <span class="fee-label">Fee</span>
+                <strong>30.70 EUR</strong>
+                <p>
+                  Online payment is not available. Please wait for a bank transfer request after
+                  the application has been checked.
+                </p>
+                <div class="bank-box">
+                  <span>Payment method</span>
+                  <b>Manual bank transfer after processing</b>
+                </div>
+              </article>
+            </div>
+
+            <div class="action-row split">
+              <button class="secondary-button" type="button" data-go="vehicle">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Back
+              </button>
+              <button class="primary-button" type="button" data-go="finish">
+                Submit application
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="finish" aria-labelledby="finishTitle">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>Home</span>
+              <span>Resident parking permit</span>
+              <span>Print form</span>
+            </div>
+
+            <div class="finish-panel" data-linked-error="2 10">
+              <div class="status-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 3h7l5 5v13H7V3Z"></path>
+                  <path d="M14 3v6h5M9 14h6M9 17h6M9 11h2"></path>
+                </svg>
+              </div>
+              <p class="section-label">Almost done</p>
+              <h1 id="finishTitle">Print, sign and mail the form.</h1>
+              <p>
+                The online process cannot be completed digitally. Download the paper form, sign it by hand
+                and send it by post to the city office.
+              </p>
+
+              <div class="postal-box">
+                <span>Postal address</span>
+                <strong>City of Lindenhaven, Parking Office, PO Box 1842, 12340 Lindenhaven</strong>
+              </div>
+
+              <div class="action-row">
+                <a class="primary-button" href="resident-parking-permit-paper-form.html" download>
+                  Download printable form
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path>
+                  </svg>
+                </a>
+                <button class="secondary-button" type="button" data-go="portal">
+                  Restart scenario
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside class="mistake-sidebar" aria-labelledby="mistakeTitle">
+          <div class="sidebar-header">
+            <p class="section-label">Learning panel</p>
+            <h2 id="mistakeTitle">Find the OZG mistakes</h2>
+            <p>The right panel is a reference list. It is not a checklist and cannot be selected.</p>
+          </div>
+
+          <div class="implemented-box">
+            <strong>Included in this click path</strong>
+            <p>Issues 1, 2, 3, 8 and 10 are built into the portal. The other items are included as learning context.</p>
+          </div>
+
+          <div class="mistake-list" id="mistakeList"></div>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <span>City of Lindenhaven</span>
+        <span>Privacy</span>
+        <span>Accessibility</span>
+        <span>Imprint</span>
+        <span>English</span>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
