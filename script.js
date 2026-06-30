@@ -16,13 +16,13 @@ const mistakes = [
   },
   {
     id: 4,
-    title: "Official Jargon",
-    short: "Digital public services need clear, plain language. Cryptic field labels, legal shorthand, unexplained file numbers or technical error codes can make users feel like they need administrative expertise just to complete a normal request."
+    title: "Missing digital identity",
+    short: "A mature online service should offer a secure digital identity route, such as a trusted citizen account or eID-based login. Workarounds like uploading ID photos are less integrated and can create privacy and trust problems."
   },
   {
     id: 5,
-    title: "Missing digital identity",
-    short: "A mature online service should offer a secure digital identity route, such as a trusted citizen account or eID-based login. Workarounds like uploading ID photos are less integrated and can create privacy and trust problems."
+    title: "Official Jargon",
+    short: "Digital public services need clear, plain language. Cryptic field labels, legal shorthand, unexplained file numbers or technical error codes can make users feel like they need administrative expertise just to complete a normal request."
   },
   {
     id: 6,
