@@ -9,7 +9,7 @@
   </head>
   <body class="scenario-modal-open">
     <div class="app-shell">
-      <header class="site-header">
+      <header class="site-header compact-header">
         <div class="brand">
           <div class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 48 48" role="img">
@@ -22,16 +22,6 @@
             <span>Service Portal</span>
           </div>
         </div>
-
-        <form class="top-search" id="topSearch" role="search">
-          <label class="sr-only" for="searchInput">Search services, topics, forms</label>
-          <input id="searchInput" name="query" type="search" placeholder="Search services, topics, forms...">
-          <button class="icon-button" type="submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m21 21-4.7-4.7M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"></path>
-            </svg>
-          </button>
-        </form>
       </header>
 
       <nav class="main-nav" aria-label="Primary navigation">
@@ -58,31 +48,9 @@
                 <p class="section-label">Municipal services</p>
                 <h1 id="portalTitle">Find and start a city service</h1>
                 <p>
-                  Search the portal or browse the service directory. The resident parking permit is
-                  available online, but it is not where most residents would expect it.
+                  Browse the service directory. The resident parking permit is available online,
+                  but it is not where most residents would expect it.
                 </p>
-              </div>
-              <div class="callout" data-linked-error="1">
-                <strong>Try the search</strong>
-                <span>Search for "parking permit" and see what the portal returns.</span>
-              </div>
-            </div>
-
-            <div class="search-card" data-linked-error="1">
-              <form id="serviceSearch" role="search">
-                <label for="serviceSearchInput">Search services</label>
-                <div class="field-with-button">
-                  <input id="serviceSearchInput" type="search" value="parking permit">
-                  <button class="primary-button small" type="submit">
-                    Search
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="m21 21-4.7-4.7M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </form>
-              <div class="search-result" id="searchResult" aria-live="polite">
-                Search only checks exact category names. "parking permit" returns no service result.
               </div>
             </div>
 
@@ -391,45 +359,19 @@
 
     <div class="scenario-overlay" id="scenarioOverlay" role="dialog" aria-modal="true" aria-labelledby="scenarioTitle">
       <div class="scenario-modal">
-        <section class="modal-step is-active" data-modal-step="identity">
-          <p class="section-label">Training scenario</p>
-          <h1 id="scenarioTitle">You are applying for a resident parking permit as Max Sample.</h1>
+        <section class="modal-step is-active" data-modal-step="role">
+          <p class="section-label">Training scenario · 1 of 4</p>
+          <h1 id="scenarioTitle">You are Max Sample.</h1>
           <p>
-            Your electronic ID has just been read. The portal already received your core resident data
-            and your registered vehicle details.
+            In this click dummy, you are a resident of Lindenhaven. You want to apply
+            for a resident parking permit online.
           </p>
 
-          <div class="profile-grid modal-profile-grid">
-            <article class="info-card">
-              <span class="card-kicker">Identity read</span>
-              <h2>Max Sample</h2>
-              <dl>
-                <div>
-                  <dt>Date of birth</dt>
-                  <dd>12 May 1990</dd>
-                </div>
-                <div>
-                  <dt>Main residence</dt>
-                  <dd>Lindenstrasse 25, 12345 Lindenhaven</dd>
-                </div>
-              </dl>
-            </article>
-
-            <article class="info-card">
-              <span class="card-kicker">Vehicle register</span>
-              <h2>LH-MX 2042</h2>
-              <dl>
-                <div>
-                  <dt>Vehicle owner</dt>
-                  <dd>Max Sample</dd>
-                </div>
-                <div>
-                  <dt>Permit zone</dt>
-                  <dd>North Quarter Zone A</dd>
-                </div>
-              </dl>
-            </article>
-          </div>
+          <article class="scenario-info-card">
+            <span class="card-kicker">Your role</span>
+            <h2>Resident applicant</h2>
+            <p>Move through the portal as Max and look for service design issues along the way.</p>
+          </article>
 
           <div class="action-row">
             <button class="primary-button" type="button" data-modal-next>
@@ -441,37 +383,96 @@
           </div>
         </section>
 
-        <section class="modal-step" data-modal-step="briefing">
-          <p class="section-label">Before the portal opens</p>
-          <h1>The setup looks promising.</h1>
+        <section class="modal-step" data-modal-step="identity">
+          <p class="section-label">Training scenario · 2 of 4</p>
+          <h1>Your identity has been read.</h1>
           <p>
-            The city system confirms that authentication, address verification and vehicle matching
-            have already happened in the background.
+            The electronic ID check returned your core resident data. You should not need to type
+            this information again.
           </p>
 
-          <ol class="event-list modal-event-list">
-            <li>
-              <span class="event-icon" aria-hidden="true">1</span>
+          <article class="scenario-info-card">
+            <span class="card-kicker">Identity read</span>
+            <h2>Max Sample</h2>
+            <dl>
               <div>
-                <h2>Electronic ID check completed</h2>
-                <p>The resident account returned name, date of birth and main residence.</p>
+                <dt>Date of birth</dt>
+                <dd>12 May 1990</dd>
               </div>
-            </li>
-            <li>
-              <span class="event-icon" aria-hidden="true">2</span>
               <div>
-                <h2>Vehicle data found</h2>
-                <p>The license plate LH-MX 2042 is linked to the same person and address.</p>
+                <dt>Main residence</dt>
+                <dd>Lindenstrasse 25, 12345 Lindenhaven</dd>
               </div>
-            </li>
-            <li>
-              <span class="event-icon" aria-hidden="true">3</span>
+            </dl>
+          </article>
+
+          <div class="action-row split">
+            <button class="secondary-button" type="button" data-modal-prev>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+              Back
+            </button>
+            <button class="primary-button" type="button" data-modal-next>
+              Continue
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="modal-step" data-modal-step="vehicle">
+          <p class="section-label">Training scenario · 3 of 4</p>
+          <h1>Your vehicle has been registered.</h1>
+          <p>
+            The city system also found a vehicle record linked to the same person and address.
+          </p>
+
+          <article class="scenario-info-card">
+            <span class="card-kicker">Vehicle register</span>
+            <h2>LH-MX 2042</h2>
+            <dl>
               <div>
-                <h2>Service goal selected</h2>
-                <p>Max wants to apply online for a resident parking permit in Lindenhaven.</p>
+                <dt>Vehicle owner</dt>
+                <dd>Max Sample</dd>
               </div>
-            </li>
-          </ol>
+              <div>
+                <dt>Permit zone</dt>
+                <dd>North Quarter Zone A</dd>
+              </div>
+            </dl>
+          </article>
+
+          <div class="action-row split">
+            <button class="secondary-button" type="button" data-modal-prev>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+              Back
+            </button>
+            <button class="primary-button" type="button" data-modal-next>
+              Continue
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="modal-step" data-modal-step="ready">
+          <p class="section-label">Training scenario · 4 of 4</p>
+          <h1>Now open the city portal.</h1>
+          <p>
+            Your task is to apply for the permit and notice where the digital service breaks down.
+            Use the right panel only as a reference for possible OZG mistakes.
+          </p>
+
+          <article class="scenario-info-card">
+            <span class="card-kicker">Service goal</span>
+            <h2>Resident parking permit</h2>
+            <p>Start in the municipal service directory and continue through the application flow.</p>
+          </article>
 
           <div class="action-row split">
             <button class="secondary-button" type="button" data-modal-prev>

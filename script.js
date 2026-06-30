@@ -53,11 +53,13 @@ const mistakes = [
 
 const screens = Array.from(document.querySelectorAll(".screen"));
 const modalSteps = Array.from(document.querySelectorAll(".modal-step"));
+const modalStepNames = modalSteps.map((step) => step.dataset.modalStep);
 const mistakeList = document.querySelector("#mistakeList");
 const portalPanel = document.querySelector("#portalPanel");
 const scenarioOverlay = document.querySelector("#scenarioOverlay");
 const toast = document.querySelector("#toast");
 let toastTimer;
+let currentModalStep = 0;
 
 function goTo(screenName) {
   screens.forEach((screen) => {
@@ -80,6 +82,15 @@ function showModalStep(stepName) {
   modalSteps.forEach((step) => {
     step.classList.toggle("is-active", step.dataset.modalStep === stepName);
   });
+  currentModalStep = Math.max(0, modalStepNames.indexOf(stepName));
+}
+
+function moveModalStep(direction) {
+  const nextStep = currentModalStep + direction;
+  if (nextStep < 0 || nextStep >= modalStepNames.length) {
+    return;
+  }
+  showModalStep(modalStepNames[nextStep]);
 }
 
 function closeScenarioModal() {
@@ -131,13 +142,13 @@ document.addEventListener("click", (event) => {
 
   const nextModalButton = event.target.closest("[data-modal-next]");
   if (nextModalButton) {
-    showModalStep("briefing");
+    moveModalStep(1);
     return;
   }
 
   const prevModalButton = event.target.closest("[data-modal-prev]");
   if (prevModalButton) {
-    showModalStep("identity");
+    moveModalStep(-1);
     return;
   }
 
@@ -153,25 +164,6 @@ document.addEventListener("click", (event) => {
     const isOpen = item.classList.toggle("is-open");
     trigger.setAttribute("aria-expanded", String(isOpen));
   }
-});
-
-document.querySelector("#serviceSearch").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const query = document.querySelector("#serviceSearchInput").value.trim();
-  const result = document.querySelector("#searchResult");
-
-  if (query.toLowerCase() === "traffic") {
-    result.textContent = "1 category found: Traffic. The actual parking permit service is still hidden several levels deeper.";
-  } else {
-    result.textContent = `No service result for "${query}". Search only checks exact category names, not service titles.`;
-  }
-});
-
-document.querySelector("#topSearch").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const query = document.querySelector("#searchInput").value.trim() || "your search";
-  showToast(`No direct service result for "${query}". Try the service directory.`);
-  goTo("portal");
 });
 
 renderMistakes();
