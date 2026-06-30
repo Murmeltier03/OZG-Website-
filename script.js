@@ -1,69 +1,61 @@
 const mistakes = [
   {
     id: 1,
-    title: "Poor findability",
-    short: "The service is hidden deep in the navigation and search does not find it.",
-    note: "Included in this click path."
+    title: "Findability",
+    short: "Users should be able to find a digital service through search, navigation and wording that match their real-world intent. If a service is hidden deep in a menu or search only understands internal category names, the service may technically exist online but still fail for residents."
   },
   {
     id: 2,
-    title: "Media break",
-    short: "The application cannot be completed digitally and switches to paper/post.",
-    note: "Included in this click path."
+    title: "Media Break",
+    short: "A media break happens when an online process suddenly switches to paper, postal mail, manual signatures, phone calls or in-person steps. OZG services should ideally be digital from application to processing and response."
   },
   {
     id: 3,
-    title: "Duplicate data entry",
-    short: "Data that was already read from ID and registers must be entered again.",
-    note: "Included in this click path."
+    title: "Duplicate Data Entry",
+    short: "Once-only means residents should not have to type data again when the administration already has it or has just verified it. Repeated name, address, date-of-birth or vehicle fields create effort and increase error risk."
   },
   {
     id: 4,
-    title: "Missing digital identity",
-    short: "A flawed service might ask for ID photos instead of using a trusted account.",
-    note: "Reference item."
+    title: "Official Jargon",
+    short: "Digital public services need clear, plain language. Cryptic field labels, legal shorthand, unexplained file numbers or technical error codes can make users feel like they need administrative expertise just to complete a normal request."
   },
   {
     id: 5,
-    title: "Official jargon",
-    short: "Unclear labels and technical errors make the service hard to understand.",
-    note: "Reference item."
+    title: "Missing digital identity",
+    short: "A mature online service should offer a secure digital identity route, such as a trusted citizen account or eID-based login. Workarounds like uploading ID photos are less integrated and can create privacy and trust problems."
   },
   {
     id: 6,
-    title: "Poor accessibility or mobile layout",
-    short: "A service can fail when contrast, labels, keyboard access or responsive layout are weak.",
-    note: "Reference item."
+    title: "Accessibility / Mobile Layout",
+    short: "An online service should work for people using phones, keyboard navigation, screen readers and different visual needs. Tiny text, weak contrast, missing labels or broken mobile layouts exclude users."
   },
   {
     id: 7,
-    title: "No status feedback",
-    short: "Users need confirmation, a case number and a way to track progress.",
-    note: "Reference item."
+    title: "No Status Feedback",
+    short: "After submitting a request, users need confidence that it arrived. Good services provide a confirmation, case or reference number, expected next steps and ideally a way to track the processing status."
   },
   {
     id: 8,
-    title: "No online payment",
-    short: "The portal shows a fee but does not let the user pay online.",
-    note: "Included in this click path."
+    title: "No Online Payment",
+    short: "If a fee is part of the administrative service, payment should be integrated into the digital transaction. Bank transfers after processing or separate offline payment instructions interrupt the service journey."
   },
   {
     id: 9,
-    title: "Isolated local solution",
-    short: "Services should be reusable and consistent across portal networks, not one-off local builds.",
-    note: "Reference item."
+    title: "Isolated Local Solution",
+    short: "Services should be reusable, standardized and compatible across public administration portals where possible. One-off local solutions create inconsistent wording, behavior and technical integration."
   },
   {
     id: 10,
-    title: "Form download instead of online application",
-    short: "A service advertised as online only provides a downloadable form.",
-    note: "Included in this click path."
+    title: "Form Download",
+    short: "A PDF download can be helpful, but it is not the same as an online application. If the user still has to download, print, fill, sign or mail a form, the service remains at a low digital maturity level."
   }
 ];
 
 const screens = Array.from(document.querySelectorAll(".screen"));
+const modalSteps = Array.from(document.querySelectorAll(".modal-step"));
 const mistakeList = document.querySelector("#mistakeList");
 const portalPanel = document.querySelector("#portalPanel");
+const scenarioOverlay = document.querySelector("#scenarioOverlay");
 const toast = document.querySelector("#toast");
 let toastTimer;
 
@@ -84,17 +76,31 @@ function showToast(message) {
   }, 3200);
 }
 
+function showModalStep(stepName) {
+  modalSteps.forEach((step) => {
+    step.classList.toggle("is-active", step.dataset.modalStep === stepName);
+  });
+}
+
+function closeScenarioModal() {
+  document.body.classList.remove("scenario-modal-open");
+  scenarioOverlay.setAttribute("hidden", "");
+  goTo("portal");
+}
+
 function renderMistakes() {
   mistakeList.innerHTML = mistakes.map((mistake) => {
     return `
       <article class="mistake-item" data-mistake="${mistake.id}">
-        <div class="mistake-summary">
+        <button class="mistake-trigger" type="button" aria-expanded="false">
           <span class="mistake-number">${mistake.id}</span>
-          <div>
-            <h3>${mistake.title}</h3>
-            <p>${mistake.short}</p>
-            <span>${mistake.note}</span>
-          </div>
+          <span class="mistake-title">${mistake.title}</span>
+          <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+        <div class="mistake-body">
+          <p>${mistake.short}</p>
         </div>
       </article>
     `;
@@ -121,6 +127,31 @@ document.addEventListener("click", (event) => {
     });
     showToast(`Opened category: ${directoryItem.textContent.trim()}`);
     return;
+  }
+
+  const nextModalButton = event.target.closest("[data-modal-next]");
+  if (nextModalButton) {
+    showModalStep("briefing");
+    return;
+  }
+
+  const prevModalButton = event.target.closest("[data-modal-prev]");
+  if (prevModalButton) {
+    showModalStep("identity");
+    return;
+  }
+
+  const closeScenarioButton = event.target.closest("[data-close-scenario]");
+  if (closeScenarioButton) {
+    closeScenarioModal();
+    return;
+  }
+
+  const trigger = event.target.closest(".mistake-trigger");
+  if (trigger) {
+    const item = trigger.closest(".mistake-item");
+    const isOpen = item.classList.toggle("is-open");
+    trigger.setAttribute("aria-expanded", String(isOpen));
   }
 });
 

@@ -14,4 +14,4 @@ Oeffne `index.html` direkt im Browser. Es ist keine Installation und kein lokale
 - Fehler 8: Kein Online-Payment, nur spaetere Ueberweisung.
 - Fehler 10: Formular-Download statt echter Online-Antragstellung.
 
-Die rechte Seitenleiste zeigt alle zehn Fehler als reine Informationsliste. Sie ist nicht anklickbar und nicht als Auswahl- oder Bewertungsmechanik gedacht.
+Beim Start erscheint das Szenario als Popup ueber einem unscharfen Portal-Hintergrund. Die rechte Seitenleiste zeigt alle zehn Fehler als aufklappbare Informationsliste, ohne in der Website zu verraten, welche davon im Klickpfad eingebaut sind.
